@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   piListenerBayUrl: '192.168.254.66:3000/bay',
   piListenerLibUrl: '192.168.254.66:3000/library',
+  piListenerCapUrl: '192.168.254.66:3000/capacity',
   proxyurl: "http://localhost:8080/",
 };
 

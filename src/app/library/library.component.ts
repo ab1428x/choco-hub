@@ -13,6 +13,9 @@ export class LibraryComponent implements OnInit {
   private proxyurl = environment.proxyurl;
   public titlesList: string[] = [];
 
+  private piListenerCapUrl = environment.piListenerCapUrl;
+  public capsList: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -23,6 +26,15 @@ export class LibraryComponent implements OnInit {
       data.text().then(res => {
         this.titlesList = res.split("\n");
         this.titlesList = this.titlesList.filter(x => x.length > 0);
+      });
+    })
+
+    var fullPathCap = this.proxyurl + this.piListenerCapUrl;
+
+    fetch(fullPathCap).then(data => {
+      data.text().then(res => {
+        this.capsList = res.split("\n");
+        this.capsList = this.capsList.filter(x => x.length > 0);
       });
     })
   }
