@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { contains, merge } from './static.js';\nexport * from './load-parse.js';\n//# sourceMappingURL=index-browser.mjs.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

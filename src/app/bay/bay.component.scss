@@ -1,0 +1,51 @@
+.search-btn {
+    margin-left: 5px;
+}
+
+.search-div {
+    width: 50%;
+    display: flex;
+}
+
+.search-box {
+  width: 60%;
+}
+
+.results-table {
+    color: white;
+
+
+    th {
+      border-top: 0;
+    }
+
+    th, td:before {
+      color: #dd5;
+    }
+}
+
+@media (max-width: 767.98px) { 
+  button {
+    width: 84px;
+  }
+  .input-group.search-div {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .search-div {
+    width: 100%;
+  }
+
+  .search-box {
+    width: 70%;
+    float: left;
+  }
+  .search-btn {
+    float: right;
+  }
+ }
+
+.btn:not(.search-btn) {
+  color: white !important;
+}

@@ -1,0 +1,75 @@
+<div class="search-div">
+    <input #searchInput type="search" class="form-control rounded search-box" placeholder="Search" aria-label="Search"
+      aria-describedby="search-addon" />
+    <button type="button" class="btn btn-outline-primary search-btn" (click)="searchTorrents(searchInput)">search</button>
+  </div>
+
+  <!-- TEST TABLE -->
+<!--   <div class="table-responsive">
+    <table class="table results-table">
+      <tr>
+        <th>Title</th>
+        <th>Seeds</th>
+        <th>Size</th>
+        <th>Save To...</th>
+        <th>Upload Date</th>
+       </tr>
+       <tr>
+         <td>Eminem - Music To Be Murdered By</td>
+         <td>220</td>
+         <td>270 MB</td>
+         <td>
+          <button type="button" class="btn btn-danger" 
+          style="margin-right: 3px;">New Release</button>
+          <button type="button" class="btn btn-primary" 
+          style="margin-right: 3px;">Cereals</button>
+          <button type="button" class="btn btn-warning" 
+          >Drop Area</button>
+         </td>
+         <td>27-08-2020</td>
+       </tr>
+    </table>
+  </div> -->
+
+  <!-- RESULTS TABLE -->
+  <div class="table-responsive">
+   <table *ngIf="pirateElements.length > 0" class="table results-table">
+      <th>Title</th>
+      <th>Seeds</th>
+      <th>Size</th>
+      <th>Save To...</th>
+      <th>Upload Date</th>
+     <tr *ngFor="let pirateEl of pirateElements">
+       <td>
+        {{ pirateEl.title }}
+       </td>
+       <td>
+        {{ pirateEl.seeds }}
+       </td>
+       <td>
+        {{ pirateEl.size }}
+       </td>
+       <td>
+        <button type="button" class="btn btn-danger" (click)="sendTorrentToPi(pirateEl, 'nr')" 
+        style="margin-right: 3px;">New Release</button>
+        <button type="button" class="btn btn-primary" (click)="sendTorrentToPi(pirateEl, 'c')"
+        style="margin-right: 3px;">Cereals</button>
+        <button type="button" class="btn btn-warning" 
+        (click)="sendTorrentToPi(pirateEl, 'da')">Drop Area</button>
+       </td>
+       <td>
+        {{ pirateEl.date }}
+       </td>
+     </tr>
+   </table>
+  </div>
+  
+  <!-- NAVIGATION -->
+   <nav *ngIf="pages.length > 1">
+    <ul class="pagination">
+      <li *ngIf="currentPage > 1 && pages.length > 0" class="page-item"><a class="page-link" (click)="goToPage(currentPage-1)" href="#">Previous</a></li>
+      <li *ngFor="let page of subPages" class="page-item" [ngClass]="currentPage == page.pageNumber ? 'active' : ''">
+          <a class="page-link" (click)="goToPage(page.pageNumber)">{{ page.pageNumber }}</a></li>
+      <li *ngIf="pages.length > 0 && currentPage < pages[pages.length-1].pageNumber" class="page-item"><a class="page-link" (click)="goToPage(currentPage-1)" href="#">Next</a></li>
+    </ul>
+  </nav>

@@ -1,0 +1,17 @@
+.navbar {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100%;
+    border: solid #007bff;
+    border-width: 0 0 1px 0;
+}
+
+span.navbar-brand {
+    color: #007bff;
+}
+
+.active {
+    font-weight: bold;
+}
+
+//background: url("../src/assets/farm_background.jpg") no-repeat center center fixed;

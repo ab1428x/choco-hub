@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class BayPage {\n  constructor() {\n    this.pageNumber = -1;\n    this.endUrl = \"\";\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

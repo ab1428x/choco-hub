@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: true,\n  piListenerBayUrl: 'http://localhost:3000/bay',\n  piListenerLibUrl: 'http://localhost:3000/library',\n  proxyurl: \"http://192.168.254.66:8086/\"\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

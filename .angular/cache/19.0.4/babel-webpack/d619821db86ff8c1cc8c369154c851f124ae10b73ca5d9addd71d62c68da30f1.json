@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class PirateElement {\n  constructor() {\n    this.title = \"\";\n    this.magnet = \"\";\n    this.seeds = \"\";\n    this.size = \"\";\n    this.date = \"\";\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
