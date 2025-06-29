@@ -89,34 +89,34 @@ export class BayComponent implements OnInit {
 
   private parseRowData(html: string): Array<ParsedData> {
     const $ = cheerio.load(html);
-
-    // Array to store the parsed data
     const parsedData: Array<ParsedData> = [];
-  
-    // Select the rows in the table (adjust selector to match the actual structure of your table)
+
     $('table#searchResult tbody tr').each((index, row) => {
       const $row = $(row);
-  
-      // Extract the magnet link
+      // Title
+      const title = $row.find('.detName a.detLink').text().trim();
+      // Magnet link (more robust selector)
       const magnetLink = $row.find('a[href^="magnet:?"]').attr('href') || '';
-
-      // Extract the title
-      const title = $row.find('a[href]:eq(1)').text().trim();
-      const description = $row.find('.detDesc').text().trim();
-  
-      const size = $row.find('td:nth-child(5)').text().trim();
-      const date = $row.find('td:nth-child(3)').text().trim();
-  
-      // Extract the seeds (e.g., from a specific table cell)
-      const seeds = $row.find('td:nth-child(6)').text().trim();
-  
+      // Description (contains date and size)
+      const description = $row.find('font.detDesc').text().trim();
+      // Extract date and size from description
+      let date = '';
+      let size = '';
+      const dateMatch = description.match(/Uploaded ([^,]+),/);
+      if (dateMatch) {
+        date = dateMatch[1].replace(/\u00a0/g, ' ').trim();
+      }
+      const sizeMatch = description.match(/Size ([^,]+),/);
+      if (sizeMatch) {
+        size = sizeMatch[1].replace(/\u00a0/g, ' ').trim();
+      }
+      // Seeds (3rd td align=right)
+      const seeds = $row.find('td[align="right"]').eq(0).text().trim();
       // Add the data to the array
       if (magnetLink && title) {
         parsedData.push({ title, magnetLink, date, size, description, seeds });
       }
     });
-   // console.log('full data:');
-   // console.log(parsedData); // Log to verify the output
     return parsedData;
   }
 
